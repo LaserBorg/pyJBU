@@ -1,5 +1,9 @@
 __tmp__/
+_old/
 __pycache__/
 *.pyd
+
+#Cython builds:
+process_row.cpython-3*
 
 /images/output.jpg

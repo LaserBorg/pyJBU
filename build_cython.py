@@ -1,5 +1,7 @@
 '''
-COMPILE: python build_cython.py build_ext --inplace
+COMPILE: 
+    cd pyJBU
+    python build_cython.py build_ext --inplace
 '''
 
 from setuptools import setup
