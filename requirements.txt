@@ -1,4 +1,4 @@
-numpy==1.22.*
+numpy<1.27
 opencv-python>=4.5.*
 
-# cython>=0.29.24  # build requirement
+cython>=0.29.24

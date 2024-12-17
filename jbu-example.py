@@ -1,5 +1,6 @@
 import cv2
 from lib.pyjbu import JBU
+import numpy as np
 
 if __name__ == '__main__':
 
@@ -12,7 +13,7 @@ if __name__ == '__main__':
     source = cv2.imread(source_path, int(use_rgb))
     reference = cv2.imread(reference_path, int(use_rgb))
 
-    jbu = JBU(radius=2, sigma_spatial=2.5, sigma_range=6.5, width=800, rgb=use_rgb)
+    jbu = JBU(radius=2, sigma_spatial=2.5, sigma_range=np.std(reference), width=800, rgb=use_rgb)  # sigma_range=6.5
 
     img = jbu.run(source, reference)
 

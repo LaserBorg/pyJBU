@@ -6,13 +6,16 @@ forked from https://github.com/mzur/pyJBU
 compile Cython-based process_row: python build_cython.py build_ext --inplace
 '''
 
-import time
 import cv2
 import numpy as np
 
 
 # CYTHON ALTERNATIVE
-from process_row import process_row_rgb, process_row_gray  # type: ignore
+try:
+    from process_row import process_row_rgb, process_row_gray  # type: ignore
+except:
+    from lib.process_row import process_row_rgb, process_row_gray  # type: ignore
+
 
 # def process_row_rgb(y, padding, ref_size, reference_padded, source_upsampled_padded, kernel_spatial, lut_range, step):
 #     row = np.zeros((ref_size[0], 3))
@@ -144,8 +147,9 @@ class JBU:
 
 
 if __name__ == '__main__':
+    import time
 
-    source_path     = "images/depth.jpg"
+    source_path     = "images/depth_32x24.jpg"
     reference_path  = "images/color.jpg"
     output_path     = "images/output.jpg"
 
@@ -154,7 +158,7 @@ if __name__ == '__main__':
     source = cv2.imread(source_path, int(use_rgb))
     reference = cv2.imread(reference_path, int(use_rgb))
 
-    jbu = JBU(radius=2, sigma_spatial=2.5, sigma_range=6.5, width=400, rgb=use_rgb, mplib=mplib)
+    jbu = JBU(radius=2, sigma_spatial=1.5, sigma_range=2., width=640, rgb=use_rgb, mplib=mplib)
 
     start_time = time.time()  # Start the timer
     img = jbu.run(source, reference)
