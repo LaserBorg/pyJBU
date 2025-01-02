@@ -1,0 +1,9 @@
+__tmp__/
+__pycache__/
+*.pyd
+Thumbs.db
+
+#Cython builds:
+process_row.cpython-3*
+
+/images/output.jpg
